@@ -144,3 +144,34 @@ class TextEditor:
         self.root.title("Untitled - TextEditor")
         self.file = None
         self.TextArea.delete(1.0,END)
+
+    def saveFile(self):
+
+        if self.file == None:
+            # Save as new file
+            self.file = asksaveasfilename(initialfile='Untitled.txt',
+                                            defaultextension=".txt",
+                                            filetypes=[("All Files","*.*"),
+                                                ("Text Documents","*.txt")])
+
+            if self.file == "":
+                self.file = None
+            else:
+
+                # Try to save the file
+                file = open(self.file,"w")
+                file.write(self.TextArea.get(1.0,END))
+                file.close()
+
+                # Change the window title
+                self.root.title(os.path.basename(self.file) + " - TextEditor")
+
+
+        else:
+            file = open(self.file,"w")
+            file.write(self.TextArea.get(1.0,END))
+            file.close()
+
+    def quitApplication(self):
+        self.root.destroy()
+        # exit()
