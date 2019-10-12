@@ -126,3 +126,6 @@ class TextEditor:
     def paste(self):
         self.TextArea.event_generate("<<Paste>>")
 
+    def showAbout(self): 
+        showinfo("TextEditor","Created By -- Shivam Sharma, Ambatipudi Abhiram, Jaihind Pratap")
+
