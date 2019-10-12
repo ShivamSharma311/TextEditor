@@ -116,3 +116,13 @@ class TextEditor:
         # Scrollbar will automatically adjust according to the content         
         self.ScrollBar.config(command=self.TextArea.yview)     
         self.TextArea.config(yscrollcommand=self.ScrollBar.set)
+
+    def cut(self):
+        self.TextArea.event_generate("<<Cut>>")
+
+    def copy(self):
+        self.TextArea.event_generate("<<Copy>>")
+
+    def paste(self):
+        self.TextArea.event_generate("<<Paste>>")
+
