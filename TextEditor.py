@@ -116,3 +116,7 @@ class TextEditor:
         # Scrollbar will automatically adjust according to the content         
         self.ScrollBar.config(command=self.TextArea.yview)     
         self.TextArea.config(yscrollcommand=self.ScrollBar.set)
+
+    def showAbout(self): 
+        showinfo("TextEditor","Created By -- Shivam Sharma, Ambatipudi Abhiram, Jaihind Pratap")
+
