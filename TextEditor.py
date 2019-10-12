@@ -116,29 +116,31 @@ class TextEditor:
         # Scrollbar will automatically adjust according to the content         
         self.ScrollBar.config(command=self.TextArea.yview)     
         self.TextArea.config(yscrollcommand=self.ScrollBar.set)
-    def __openFile(self):
 
-        self.__file = askopenfilename(defaultextension=".txt",
+    def openFile(self):
+
+        self.file = askopenfilename(defaultextension=".txt",
                                     filetypes=[("All Files","*.*"),
                                         ("Text Documents","*.txt")])
 
-        if self.__file == "":
+        if self.file == "":
 
             # no file to open
-            self.__file = None
+            self.file = None
         else:
 
             # Try to open the file
             # set the window title
-            self.__root.title(os.path.basename(self.__file) + " - TextEditor")
-            self.__thisTextArea.delete(1.0,END)
+            self.root.title(os.path.basename(self.file) + " - TextEditor")
+            self.TextArea.delete(1.0,END)
 
-            file = open(self.__file,"r")
+            file = open(self.file,"r")
 
-            self.__thisTextArea.insert(1.0,file.read())
+            self.TextArea.insert(1.0,file.read())
 
             file.close()
-    def __newFile(self):
-        self.__root.title("Untitled - TextEditor")
-        self.__file = None
-        self.__thisTextArea.delete(1.0,END)
+
+    def newFile(self):
+        self.root.title("Untitled - TextEditor")
+        self.file = None
+        self.TextArea.delete(1.0,END)
