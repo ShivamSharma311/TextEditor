@@ -21,7 +21,7 @@ class TextEditor:
     ScrollBar = Scrollbar(TextArea)     
     file = None
 
-    def init(self,**kwargs):
+    def __init__(self,**kwargs):
 
         # Set icon
 
@@ -187,3 +187,13 @@ class TextEditor:
     def quitApplication(self):
         self.root.destroy()
         # exit()
+        
+    def run(self):
+
+        # Run main application
+        self.root.mainloop()
+
+
+# Run main application
+texteditor = TextEditor(width=600,height=400)
+texteditor.run()
